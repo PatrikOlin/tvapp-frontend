@@ -1,0 +1,13 @@
+.searchForm, .searchContainer {
+  text-align: center;
+}
+
+.searchForm input[type=text] {
+  width: 25em;
+  height: 2.5em;
+}
+
+.searchForm button {
+  width: 15em;
+  margin-top: 2em;
+}
