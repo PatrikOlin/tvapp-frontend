@@ -1,6 +1,6 @@
 export interface Show {
-  title: string;
-  imageUrl: string;
+  id: number;
+  name: string;
+  poster_path: string;
   overview: string;
-  status: string;
 }

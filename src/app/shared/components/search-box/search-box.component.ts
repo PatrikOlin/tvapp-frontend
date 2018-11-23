@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiCallerService } from '../../../services/apiCaller.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Show } from '../../show/show';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-search-box',
@@ -12,17 +14,29 @@ export class SearchBoxComponent {
   searchForm = new FormGroup({
     searchQuery: new FormControl()
   });
-  shows;
+  shows: Show[] = [];
   show: Show;
 
   constructor(private apiCaller: ApiCallerService) {}
 
   onSubmit(query) {
     console.log('query', query);
-    this.fetchShows(query);
+    this.fetchShow(query);
   }
 
-  fetchShows(searchQuery: string) {
+  fetchShow(searchQuery: string) {
+    this.apiCaller.searchShows(searchQuery).subscribe(
+      data => {
+        this.shows = <any>data;
+        console.log(this.shows);
+      },
+      err => console.log(err),
+      () => console.log('done loading shows')
+    );
+  }
+
+
+/*   fetchShows(searchQuery: string) {
     this.apiCaller.searchShows(searchQuery).subscribe(
       data => {
         this.shows = data;
@@ -32,5 +46,5 @@ export class SearchBoxComponent {
       () => console.log('done loading shows')
     );
   }
-
+ */
 }

@@ -2,6 +2,32 @@
   color: black;
   margin: 1em;
   margin-top: 2em;
-  padding: 1.5em;
   width: 20em;
+  height: 45em;
+}
+
+.card-body {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-text {
+  word-wrap: break-word;
+}
+
+.favoriteIcon {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  z-index: 2;
+}
+
+.card-footer {
+  text-align: end;
+  padding-right: 3em;
+}
+
+.card-footer a {
+  position: absolute;
+  left: 1em;
 }

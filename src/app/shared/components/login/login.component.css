@@ -1,0 +1,16 @@
+.loginContainer {
+  min-width: 25em;
+}
+
+.loginForm {
+  padding: 1em;
+}
+
+.loginForm input {
+  width: 100%;
+  margin-bottom: 7px;
+}
+
+.loginForm button {
+  float:right;
+}

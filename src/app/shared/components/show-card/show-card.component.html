@@ -1,8 +1,12 @@
 <div class="card">
-  <img class="card-img-top" src=" {{show.imageUrl}} " />
+  <img class="card-img-top" src="{{show.poster_path}}" />
   <div class="card-body">
-    <h5 class="card-title">{{show.title}}</h5>
-    <p class="card-text"><strong>Status: {{show.status}}</strong></p>
+    <h5 class="card-title">{{show.name}}</h5>
     <p class="card-text">{{show.overview}}</p>
+  </div>
+  <div class="card-footer">
+    <span><a><small>Läs mer</small></a></span>
+    <span *ngIf="this.isFavorite; else notFavorite" (click)="toggleFavorite(show)"><small>Lägg till som favorit</small><i class="favoriteIcon far fa-heart"></i></span>
+    <ng-template #notFavorite><span (click)="toggleFavorite(show)"><small>Ta bort från favoriter</small><i class="favoriteIcon fas fa-heart"></i></span></ng-template>
   </div>
 </div>

@@ -1,0 +1,10 @@
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+  <a class="navbar-brand">Tvapp</a>
+  <span dropdown>
+    <a *ngIf="userService.isLoggedIn()" (click)="onLogOut()">Logga ut</a>
+    <a *ngIf="!userService.isLoggedIn()" (click)="openDialog()" autoClose="true" class="dropdown-toggle">Logga in</a>
+    <ul *dropdownMenu appClickStopPropagation class="dropdown-menu dropdown-menu-right" role="menu">
+      <app-login></app-login>
+    </ul>
+  </span>
+</nav>
