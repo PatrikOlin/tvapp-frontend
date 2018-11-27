@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
+import { SignupComponent } from '../signup/signup.component';
 
 @Component({
   selector: 'app-navbar',
@@ -17,6 +18,12 @@ export class NavbarComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
+      width: '40em'
+    });
+  }
+
+  openSignup(): void {
+    const dialogRef = this.dialog.open(SignupComponent, {
       width: '40em'
     });
   }

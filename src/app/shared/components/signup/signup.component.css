@@ -1,0 +1,24 @@
+.signupContainer {
+  min-width: 25em;
+}
+
+.signupForm {
+  padding: 1em;
+}
+
+.signupForm input {
+  width: 100%;
+  margin-bottom: 7px;
+}
+
+.signupForm button {
+  float:right;
+}
+
+.ngvalid[required], .ng-valid-required {
+  border-left: 5px solid #42A948;
+}
+
+.ng-invalid:not(form):not(div) {
+  border-left: 5px solid #a94442;
+}

@@ -18,6 +18,8 @@ import { ErrorHandler } from './services/error.handler';
 import { UrlSanitizerPipe } from './pipes/url-sanitizer.pipe';
 import { ShowDetailsComponent } from './shared/components/show-details/show-details.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { SignupComponent } from './shared/components/signup/signup.component';
+import { CompareValidatorDirective } from './directives/compare-validator.directive';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { AppRoutingModule } from './/app-routing.module';
     NavbarComponent,
     ClickStopPropagationDirective,
     UrlSanitizerPipe,
-    ShowDetailsComponent
+    ShowDetailsComponent,
+    SignupComponent,
+    CompareValidatorDirective
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,7 @@ import { AppRoutingModule } from './/app-routing.module';
   bootstrap: [AppComponent],
   entryComponents: [
     NavbarComponent,
+    SignupComponent,
     LoginComponent
   ]
 })

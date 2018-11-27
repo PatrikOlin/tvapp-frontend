@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Show } from '../../show/show';
+import { ApiCallerService } from 'src/app/services/apiCaller.service';
+import { ShowDetails } from '../../show/show-details';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-show-card',
@@ -10,9 +13,9 @@ export class ShowCardComponent implements OnInit {
 
   @Input() show: Show;
   isFavorite = false;
-  BASE_URI = 'http://image.tmdb.org/t/p/w185';
+  BASE_URI = 'http://image.tmdb.org/t/p/w185/';
 
-  constructor() {
+  constructor(private apiCaller: ApiCallerService) {
    }
 
   ngOnInit() {

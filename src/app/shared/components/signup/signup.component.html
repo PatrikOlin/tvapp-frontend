@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Skapa ny användare     {{passwords.errors?.passwordCheck}}</h1>
+<div mat-dialog-content class="signupContainer">
+  <form class="signupForm form-group"
+    #signupForm="ngForm"
+    (ngSubmit)="onSubmit(signupForm)">
+    <label for="email">Email</label>
+    <input type="text"
+    name="email"
+    class="loginInput"
+    id="email"
+    placeholder="email"
+    required
+    email><br />
+    <div ngModelGroup="passwords" #passwords="ngModelGroup" compare>
+      <label for="password">Lösenord</label>
+      <input type="password"
+        name="password"
+        id="password"
+        class="loginInput"
+        placeholder="lösenord"
+        [(ngModel)]="password"
+        required><br />
+      <label for="password">Bekräfta lösenordet</label>
+      <input type="password"
+        name="confirmPassword"
+        id="confirmPassword"
+        class="loginInput"
+        placeholder="bekräfta lösenord"
+        [(ngModel)]="confirmPassword"
+        required><br />
+    </div>
+
+    <div *ngIf="passwords.errors?.passwordCheck && (confirmPassword.dirty || confirmPassword.touched)" class="alert alert-danger">
+      Lösenorden matchar inte.
+    </div>
+    <button type="submit"
+      class="btn btn-success"
+      [disabled]="signupForm.invalid || password.errors?.passwordCheck">Skapa konto</button>
+  </form>
+</div>

@@ -1,3 +1,19 @@
-<p>
-  show-details works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col"><img class="m-4" src="{{show.poster_path}}" /></div>
+    <div class="col-sm-8 col-md-6">
+      <div class="body m-4">
+        <h3>{{ show.name }}</h3>
+        <small>{{ show.first_air_date }}</small>
+        <p class="mt-3">{{ show.overview }}</p>
+        <p><strong>Nästa avsnitt sänds: </strong>{{ show.next_episode_to_air.air_date }}</p>
+        <small>Status: {{ show.status }}</small>
+      </div>
+    </div>
+
+    <!--
+      <span *ngIf="this.isFavorite; else notFavorite" (click)="toggleFavorite(show)"><small>Lägg till som favorit</small><i class="favoriteIcon far fa-heart"></i></span>
+      <ng-template #notFavorite><span (click)="toggleFavorite(show)"><small>Ta bort från favoriter</small><i class="favoriteIcon fas fa-heart"></i></span></ng-template>
+    -->
+  </div>
+</div>

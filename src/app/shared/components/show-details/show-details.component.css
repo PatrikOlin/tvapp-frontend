@@ -1,0 +1,13 @@
+.media {
+  color: black;
+  margin: 1em;
+  margin-top: 2em;
+}
+
+.favoriteIcon {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  z-index: 2;
+}
+
