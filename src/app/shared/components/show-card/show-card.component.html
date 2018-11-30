@@ -1,14 +1,12 @@
-<div class="card">
+<div class="card" [ngStyle]="(router.url === '/watchlist') && {'height': '47em'}">
     <a [routerLink]="['/showdetails/', show.id]">
-  <img class="card-img-top" src="{{show.poster_path}}" />
+  <img class="card-img-top" src="{{show?.poster_path}}" />
   <div class="card-body">
-    <h5 class="card-title">{{show.name | defaultValue:'N/A'}}</h5>
-    <p class="card-text">{{show.overview | defaultValue:'N/A'}}</p>
+    <h5 class="card-title">{{show?.name | defaultValue:'N/A'}}</h5>
+    <p class="card-text">{{show?.overview | defaultValue:'N/A'}}</p>
   </div>
-  <!-- <div class="card-footer">
-    <span><a [routerLink]="['/showdetails/', show.id]"><small>Läs mer</small></a></span>
-    <span *ngIf="this.isFavorite; else notFavorite" (click)="toggleFavorite(show)"><small>Lägg till som favorit</small><i class="favoriteIcon far fa-heart"></i></span>
-    <ng-template #notFavorite><span (click)="toggleFavorite(show)"><small>Ta bort från favoriter</small><i class="favoriteIcon fas fa-heart"></i></span></ng-template>
-  </div> -->
+  <div *ngIf="router.url === '/watchlist'" class="card-footer">
+    <p class="text-left">Next episode {{ show?.nextAirDate | defaultValue:'N/A' }}</p>
+  </div>
   </a>
 </div>

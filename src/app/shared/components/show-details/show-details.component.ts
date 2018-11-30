@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Show } from '../../show/show';
-import { ShowDetails } from '../../show/show-details';
+import { Show } from '../../interfaces/show';
+import { ShowDetails } from '../../interfaces/show-details';
 import { ApiCallerService } from 'src/app/services/apiCaller.service';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-show-details',
@@ -15,27 +16,34 @@ export class ShowDetailsComponent implements OnInit {
   show: ShowDetails;
   BASE_URI = 'http://image.tmdb.org/t/p/w400/';
 
+
   constructor(
     private apiCaller: ApiCallerService,
     private route: ActivatedRoute,
     private router: Router,
-    ) { }
+    private loadingService: LoadingService) {}
 
   ngOnInit() {
-
-    this.show$ = this.route.paramMap.pipe(
+    this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
       this.apiCaller.getShowDetails(params.get('id')))
       ).subscribe((data) => {
         this.show = data;
         this.show.poster_path = this.BASE_URI + this.show.poster_path;
-        this.show.name = data.serieName;
+        this.show.id = data.id;
+      },
+      err => {console.log('Error', err);
+      },
+      () => {
+        console.log('FÄRDIG');
       });
       console.log(this.show);
   }
 
-  addToFavorites(userId: string, showId: string) {
-    this.apiCaller.addToFavorites(userId, showId).subscribe((res) => {
+  addToWatchlist(showId: number) {
+    const userId = +sessionStorage.getItem('userId');
+    this.show.onWatchList = true;
+    this.apiCaller.addToWatchlist(userId, showId).subscribe((res) => {
       console.log('POST skickat, allt gick finfint. Ersätt denna console.log med snackbar-bekräftelse', res);
     },
     err => {
@@ -44,6 +52,14 @@ export class ShowDetailsComponent implements OnInit {
     () => {
       console.log('Här tar POST-observablen slut!');
     });
+  }
+
+  removeFromWatchlist(showId: string) {
+    this.show.onWatchList = false;
+    this.apiCaller.removeFromWatchlist(showId).subscribe((res) => {
+      console.log('Serien borttagen från watchlist');
+    },
+    err => console.log('Nått gick fel', err));
   }
 
 /*   let showDetails: ShowDetails;

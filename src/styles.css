@@ -78,6 +78,10 @@ input::placeholder {
   font-family: 'Rubik', sans-serif;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .mat-dialog-container {
   background-color: #222222;
   color: #ffffff

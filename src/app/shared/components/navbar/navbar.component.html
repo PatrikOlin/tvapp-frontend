@@ -1,9 +1,10 @@
 <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
-  <a class="navbar-brand">Tvapp</a>
+  <a class="navbar-brand pointer" [routerLink]="['']">Showtime</a>
+  <a *ngIf="userService.isLoggedIn()" [routerLink]="['/watchlist']" class="pointer navbar-brand mr-auto" >Watchlist</a>
   <span dropdown>
-    <span style="padding-right: 1em;" *ngIf="userService.isLoggedIn()">Inloggad som {{userService.username}}</span>
-    <a *ngIf="userService.isLoggedIn()" (click)="onLogOut()" class="menu-item">Logga ut</a>
-    <a *ngIf ="!userService.isLoggedIn()" (click)="openSignup()" autoCloe="true" class="dropdown-toggle menu-item">Registrera dig</a>
-    <a *ngIf="!userService.isLoggedIn()" (click)="openDialog()" autoClose="true" class="dropdown-toggle menu-item">Logga in</a>
+    <span style="padding-right: 1em;" *ngIf="userService.isLoggedIn()">Logged in as {{userService.getUsername()}}</span>
+    <a *ngIf="userService.isLoggedIn()" (click)="onLogOut()" class="menu-item pointer">Log out</a>
+    <a *ngIf="!userService.isLoggedIn()" (click)="openSignup()" autoCloe="true" class="dropdown-toggle pointer menu-item">Sign up</a>
+    <a *ngIf="!userService.isLoggedIn()" (click)="openDialog()" autoClose="true" class="dropdown-toggle pointer menu-item">Log in</a>
   </span>
 </nav>

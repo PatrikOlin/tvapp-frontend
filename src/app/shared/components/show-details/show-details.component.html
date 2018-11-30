@@ -1,20 +1,41 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <img class="float-right m-4" src="{{show.poster_path}}" /></div>
+      <img class="float-right m-4" src="{{show?.poster_path}}" /></div>
       <div class="col-sm-8 col-md-6">
       <div class="float-left m-4">
-        <h1>{{ show?.name | defaultValue:'N/A'}}</h1>
-        <span (click)="addToFavorites(1, show.id)" class="fa-stack fa-lg">
+        <h1>{{ show?.title | defaultValue:'N/A'}}</h1>
+        <span *ngIf="show?.onWatchList" (click)="removeFromWatchlist(show.id)" class="fa-stack fa-lg" matTooltip="This show is on your watchlist">
+          <i class="fas fa-circle fa-stack-2x"></i>
+          <i class="far fa-eye fa-stack-1x" [ngStyle]="{'color': '#FDD935'}"></i>
+        </span>
+        <span *ngIf="!show?.onWatchList" (click)="addToWatchlist(show.id)" class="fa-stack fa-lg" matTooltip="This show isn't on your watchlist">
           <i class="far fa-circle fa-stack-2x"></i>
           <i class="far fa-eye fa-stack-1x"></i>
         </span>
+        <span *ngIf="show?.siteRating > 8" class="fa-stack fa-lg" matTooltip="Show rating">
+          <i class="far fa-circle fa-stack-2x"></i>
+          <i class="far fa-grin-hearts fa-stack-1x"></i>
+        </span>
+        <span *ngIf="show?.siteRating > 5 && show?.siteRating < 8" class="fa-stack fa-lg" matTooltip="Show rating">
+          <i class="far fa-circle fa-stack-2x"></i>
+          <i class="far fa-grin fa-stack-1x"></i>
+        </span>
+        <span *ngIf="show?.siteRating < 5 && show?.siteRating > 2" class="fa-stack fa-lg" matTooltip="Show rating">
+            <i class="far fa-circle fa-stack-2x"></i>
+            <i class="far fa-frown fa-stack-1x"></i>
+        </span>
+        <span *ngIf="show?.siteRating < 2" class="fa-stack fa-lg" matTooltip="Show rating">
+          <i class="far fa-circle fa-stack-2x"></i>
+          <i class="far fa-sad-cry fa-stack-1x"></i>
+      </span>
+      <span style="font-size: 2.5em;">{{show?.siteRating}}</span>
 <!--         <span *ngIf="this.isFavorite; else notFavorite" (click)="addToFavorites(show.id)"><i class="favoriteIcon far fa-heart"></i></span>
         <ng-template #notFavorite><span (click)="removeFromFavorites(show.id)"><i class="favoriteIcon fas fa-heart"></i></span></ng-template> -->
-        <h5 class="mt-3">Översikt:</h5>
+        <h5 class="mt-3">Overview:</h5>
         <p>{{ show?.overview | defaultValue:'N/A' }}</p>
-        <p><strong>Nästa avsnitt sänds: </strong>{{ show?.next_episode_to_air?.air_date | defaultValue:'N/A' }}</p>
-        <small>Första sändningsdatum: {{ show?.first_air_date | defaultValue:'N/A' }}</small><br />
+        <p><strong>Next episode: </strong>{{ show?.next_episode_to_air?.air_date | defaultValue:'N/A' }}</p>
+        <small>First air date: {{ show?.first_air_date | defaultValue:'N/A' }}</small><br />
         <small>Status: {{ show?.status | defaultValue:'N/A' }}</small>
       </div>
     </div>

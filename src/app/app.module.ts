@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { MatDialogModule, MatSnackBarModule } from '@angular/material/';
+import { MatDialogModule, MatSnackBarModule, MatTooltipModule } from '@angular/material/';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -21,6 +21,9 @@ import { AppRoutingModule } from './/app-routing.module';
 import { SignupComponent } from './shared/components/signup/signup.component';
 import { CompareValidatorDirective } from './directives/compare-validator.directive';
 import { DefaultValuePipe } from './pipes/default-value.pipe';
+import { WatchlistComponent } from './shared/components/watchlist/watchlist.component';
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
+import { LoadingService } from './services/loading.service';
 
 
 @NgModule({
@@ -35,7 +38,9 @@ import { DefaultValuePipe } from './pipes/default-value.pipe';
     DefaultValuePipe,
     ShowDetailsComponent,
     SignupComponent,
-    CompareValidatorDirective
+    CompareValidatorDirective,
+    WatchlistComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -49,9 +54,11 @@ import { DefaultValuePipe } from './pipes/default-value.pipe';
     MatSnackBarModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    MatTooltipModule
   ],
   providers: [
     ErrorHandler,
+    LoadingService,
     {provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true},
   ],
   bootstrap: [AppComponent],
@@ -59,6 +66,7 @@ import { DefaultValuePipe } from './pipes/default-value.pipe';
     NavbarComponent,
     SignupComponent,
     LoginComponent
-  ]
+  ],
+  exports: [LoadingSpinnerComponent]
 })
 export class AppModule { }

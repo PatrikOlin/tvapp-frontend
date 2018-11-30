@@ -15,3 +15,6 @@ img {
   object-fit: cover;
 }
 
+.far, .fas {
+  top: -8px;
+}

@@ -1,0 +1,13 @@
+TODO:
+  ☐ Fixa registrering till endpoint /login med POST
+  ☐ Footer med lite datum och info om var datan kommer ifrån
+  ☐ Småfix
+    ✔ Pekare på länkar @done(18-11-30 17:52)
+  ✔ Home och Watchlist i navbar, default vid inloggning är watchlist @done(18-11-30 23:23)
+  ✔ Visa rating bredvid watchlist-knappen i ShowDetailsComponent @done(18-11-30 21:28)
+  ☐ Visa säsonger och nästlade under det säsongens episode i ShowDetailsComponent
+  ✔ Implementra funktion för att ta bort från Watchlist i ShowDetailsComponent @done(18-11-30 21:28)
+  ✔ Översätt allt till engelska @done(18-11-30 17:51)
+  ☐ Bygg en komponent som visar användarens watchlist
+  ✔ Lägga till en loadingspinner och loading-service @done(18-11-30 23:17)
+  ☐ Skapa en defaultbild och visa den i showCardComponent om en show saknar bild

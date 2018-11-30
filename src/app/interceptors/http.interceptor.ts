@@ -15,7 +15,8 @@ export class RequestInterceptor implements HttpInterceptor {
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Basic ' + this.userService.getKey()
+      'Authorization': 'Basic ' + this.userService.getKey(),
+      'user_id': this.userService.getEncodedUserId()
     });
 
     const cloneReq = req.clone({headers});

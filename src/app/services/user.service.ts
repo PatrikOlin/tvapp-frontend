@@ -1,4 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
+import { ApiCallerService } from './apiCaller.service';
+import { ErrorHandler } from './error.handler';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +10,13 @@ export class UserService implements OnDestroy {
 
   private userKey;
   public username;
+  public userId;
   loggedIn = false;
+
+  constructor(
+    private apiCaller: ApiCallerService,
+    private errorHandler: ErrorHandler,
+    private router: Router) {}
 
   ngOnDestroy(): void {
     this.logout();
@@ -15,14 +24,27 @@ export class UserService implements OnDestroy {
 
   login(username: string, password: string) {
     this.setKey(username, password);
-    this.username = username;
-    this.loggedIn = true;
+    this.apiCaller.login().subscribe((res) => {
+      const encodedId = res.toString();
+      console.log(encodedId);
+      this.userId = atob(encodedId);
+      sessionStorage.setItem('userId', this.userId);
+      sessionStorage.setItem('username', username);
+      this.username = username;
+    }, (err) => {
+      console.log('ERROR:', err);
+      this.errorHandler.handleError(err.message);
+    },
+    () => {
+      this.router.navigate(['watchlist']);
+    });
   }
 
   logout() {
     sessionStorage.clear();
     this.username = '';
-    this.loggedIn = false;
+    this.isLoggedIn();
+    this.router.navigate(['']);
   }
 
   setKey(username: string, password: string) {
@@ -35,8 +57,27 @@ export class UserService implements OnDestroy {
     return this.userKey;
   }
 
+  getUserId() {
+    this.userId = sessionStorage.getItem('userId');
+    return this.userId;
+  }
+
+  getUsername() {
+    this.username = sessionStorage.getItem('username');
+    return this.username;
+  }
+
+  getEncodedUserId() {
+    let encodedUserId = sessionStorage.getItem('userId');
+    for (let i = 0; i < 3; i++) {
+      encodedUserId = btoa(encodedUserId);
+    }
+    console.log(encodedUserId);
+    return encodedUserId;
+  }
+
   isLoggedIn() {
-    if (this.getKey() != null) {
+    if (this.getUserId() != null) {
       this.loggedIn = true;
       return this.loggedIn;
     } else {
