@@ -23,7 +23,7 @@ export class ShowDetailsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.show = this.route.paramMap.pipe(
+    this.show$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
       this.apiCaller.getShowDetails(params.get('id')))
       ).subscribe((data) => {
@@ -32,6 +32,18 @@ export class ShowDetailsComponent implements OnInit {
         this.show.name = data.serieName;
       });
       console.log(this.show);
+  }
+
+  addToFavorites(userId: string, showId: string) {
+    this.apiCaller.addToFavorites(userId, showId).subscribe((res) => {
+      console.log('POST skickat, allt gick finfint. Ersätt denna console.log med snackbar-bekräftelse', res);
+    },
+    err => {
+      console.log('Nåt gick snett med POSTen', err);
+    },
+    () => {
+      console.log('Här tar POST-observablen slut!');
+    });
   }
 
 /*   let showDetails: ShowDetails;

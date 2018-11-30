@@ -20,6 +20,7 @@ import { ShowDetailsComponent } from './shared/components/show-details/show-deta
 import { AppRoutingModule } from './/app-routing.module';
 import { SignupComponent } from './shared/components/signup/signup.component';
 import { CompareValidatorDirective } from './directives/compare-validator.directive';
+import { DefaultValuePipe } from './pipes/default-value.pipe';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { CompareValidatorDirective } from './directives/compare-validator.direct
     NavbarComponent,
     ClickStopPropagationDirective,
     UrlSanitizerPipe,
+    DefaultValuePipe,
     ShowDetailsComponent,
     SignupComponent,
     CompareValidatorDirective

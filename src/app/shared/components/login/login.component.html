@@ -1,5 +1,5 @@
-<h1 mat-dialog-title>Logga in</h1>
 <div mat-dialog-content class="loginContainer">
+    <h1 mat-dialog-title>Logga in</h1>
   <form class="loginForm"
     #loginForm="ngForm"
     (ngSubmit)="onSubmit(loginForm)">
@@ -21,7 +21,7 @@
       [(ngModel)]="password"
       required><br />
     <button type="submit"
-      class="btn btn-success"
+      class="btn btn-inverse mt-4"
       [disabled]="loginForm.invalid">Logga in</button>
   </form>
 </div>

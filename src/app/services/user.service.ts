@@ -6,6 +6,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 export class UserService implements OnDestroy {
 
   private userKey;
+  public username;
   loggedIn = false;
 
   ngOnDestroy(): void {
@@ -14,11 +15,13 @@ export class UserService implements OnDestroy {
 
   login(username: string, password: string) {
     this.setKey(username, password);
+    this.username = username;
     this.loggedIn = true;
   }
 
   logout() {
     sessionStorage.clear();
+    this.username = '';
     this.loggedIn = false;
   }
 

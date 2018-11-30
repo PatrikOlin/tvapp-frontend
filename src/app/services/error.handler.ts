@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,9 @@ export class ErrorHandler {
   constructor(public snackbar: MatSnackBar) {}
 
   public handleError(err: any) {
-    this.snackbar.open(err.message, 'close');
+    const config = new MatSnackBarConfig();
+    config.panelClass = ['custom-snackbar'];
+    config.duration = 10000;
+    this.snackbar.open(err.message, 'close', config);
   }
 }

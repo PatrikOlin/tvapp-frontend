@@ -1,6 +1,7 @@
 <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
   <a class="navbar-brand">Tvapp</a>
   <span dropdown>
+    <span style="padding-right: 1em;" *ngIf="userService.isLoggedIn()">Inloggad som {{userService.username}}</span>
     <a *ngIf="userService.isLoggedIn()" (click)="onLogOut()" class="menu-item">Logga ut</a>
     <a *ngIf ="!userService.isLoggedIn()" (click)="openSignup()" autoCloe="true" class="dropdown-toggle menu-item">Registrera dig</a>
     <a *ngIf="!userService.isLoggedIn()" (click)="openDialog()" autoClose="true" class="dropdown-toggle menu-item">Logga in</a>

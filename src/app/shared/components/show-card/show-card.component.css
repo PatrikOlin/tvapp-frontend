@@ -1,9 +1,15 @@
 .card {
-  color: black;
+  color: #000000;
+  background-color: #ffffff;
   margin: 1em;
   margin-top: 2em;
   width: 20em;
   height: 45em;
+}
+
+.card a {
+  color: #000000;
+  text-decoration: none;
 }
 
 .card-body {
@@ -12,15 +18,22 @@
 }
 
 .card-text {
-  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  line-height: 1.6em;
+  max-height: 11.2em;
 }
 
-.favoriteIcon {
+/* .favoriteIcon {
   position: absolute;
   bottom: 1em;
   right: 1em;
   z-index: 2;
-}
+} */
 
 .card-footer {
   text-align: end;

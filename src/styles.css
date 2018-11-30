@@ -2,6 +2,91 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
-  background-color: #272727;
-  color: whitesmoke;
+  background-color: #FDD935;
+  color: #000000;
+  font-family: 'Rubik', sans-serif;
+  /*komplementfärg #de5e43, eventuellt #e89428*/
+}
+
+p {
+  color: #000000;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
+}
+
+.btn-primary {
+  background-color: transparent;
+  border: #000000 solid 2px;
+  color: #000000;
+  font-weight: 700;
+  transition: all .1s ease-out;
+}
+
+.btn-primary:disabled {
+  background-color: transparent;
+  border: #000000 solid 2px;
+  color: #000000;
+  font-weight: 700;
+}
+
+.btn-primary:hover {
+  border: #000000 solid 2px;
+  background-color: #000000;
+  color: #FDD935;
+}
+
+.btn-inverse {
+  background-color: transparent;
+  border: #FFD935 solid 2px;
+  color: #FFD935;
+  font-weight: 700;
+  transition: all .1s ease-out;
+}
+
+.btn-inverse:disabled {
+  background-color: transparent;
+  border: #FFD935 solid 2px;
+  color: #FFD935;
+  font-weight: 700;
+  transition: all .1s ease-out;
+}
+
+.btn-inverse:hover {
+  border: #FFD935 solid 2px;
+  background-color: #FFD935;
+  color: #000000;
+}
+
+input {
+  background-color: transparent;
+  color: #000000;
+  border: none;
+  font-family: 'Rubik', sans-serif;
+  border-bottom: #000000 solid 2px;
+}
+
+input:focus {
+  outline: 0;
+}
+
+input::placeholder {
+  color: #000000;
+  font-family: 'Rubik', sans-serif;
+}
+
+.mat-dialog-container {
+  background-color: #222222;
+  color: #ffffff
+}
+
+.custom-snackbar {
+  color: #ffffff !important;
+}
+
+.custom-snackbar button {
+  color: #FFD935 !important;
 }

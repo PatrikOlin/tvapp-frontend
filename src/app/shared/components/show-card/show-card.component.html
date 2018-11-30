@@ -1,12 +1,14 @@
 <div class="card">
+    <a [routerLink]="['/showdetails/', show.id]">
   <img class="card-img-top" src="{{show.poster_path}}" />
   <div class="card-body">
-    <h5 class="card-title">{{show.name}}</h5>
-    <p class="card-text">{{show.overview}}</p>
+    <h5 class="card-title">{{show.name | defaultValue:'N/A'}}</h5>
+    <p class="card-text">{{show.overview | defaultValue:'N/A'}}</p>
   </div>
-  <div class="card-footer">
+  <!-- <div class="card-footer">
     <span><a [routerLink]="['/showdetails/', show.id]"><small>Läs mer</small></a></span>
     <span *ngIf="this.isFavorite; else notFavorite" (click)="toggleFavorite(show)"><small>Lägg till som favorit</small><i class="favoriteIcon far fa-heart"></i></span>
     <ng-template #notFavorite><span (click)="toggleFavorite(show)"><small>Ta bort från favoriter</small><i class="favoriteIcon fas fa-heart"></i></span></ng-template>
-  </div>
+  </div> -->
+  </a>
 </div>
