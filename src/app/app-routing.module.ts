@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SearchBoxComponent } from './shared/components/search-box/search-box.component';
-import { ShowDetailsComponent } from './shared/components/show-details/show-details.component';
-import { WatchlistComponent } from './shared/components/watchlist/watchlist.component';
+import { SearchBoxComponent } from './components/search-box/search-box.component';
+import { ShowDetailsComponent } from './components/show-details/show-details.component';
+import { WatchlistComponent } from './components/watchlist/watchlist.component';
+import { SeasonDetailsComponent } from './components/season-details/season-details.component';
+import { SeasonDetailResolverService } from './shared/resolvers/season-detail-resolver.service';
 
 
 const appRoutes: Routes = [
   {path: '', component: SearchBoxComponent},
-  {path: 'showdetails/:id', component: ShowDetailsComponent},
+  {path: 'showdetails/:showId', component: ShowDetailsComponent},
+  {path: 'showdetails/:showId/season/:seasonId', component: SeasonDetailsComponent, resolve: {
+    season: SeasonDetailResolverService
+  }},
   {path: 'watchlist', component: WatchlistComponent}
 ];
 

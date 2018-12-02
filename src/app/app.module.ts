@@ -1,3 +1,4 @@
+import { SnackbarService } from './shared/services/snackbar.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -8,22 +9,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SearchBoxComponent } from './shared/components/search-box/search-box.component';
-import { ShowCardComponent } from './shared/components/show-card/show-card.component';
-import { LoginComponent } from './shared/components/login/login.component';
-import { NavbarComponent } from './shared/components/navbar/navbar.component';
-import { ClickStopPropagationDirective } from './directives/click-stop-propagation.directive';
-import { RequestInterceptor } from './interceptors/http.interceptor';
-import { ErrorHandler } from './services/error.handler';
-import { UrlSanitizerPipe } from './pipes/url-sanitizer.pipe';
-import { ShowDetailsComponent } from './shared/components/show-details/show-details.component';
+import { SearchBoxComponent } from './components/search-box/search-box.component';
+import { ShowCardComponent } from './components/show-card/show-card.component';
+import { LoginComponent } from './components/login/login.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ClickStopPropagationDirective } from './shared/directives/click-stop-propagation.directive';
+import { RequestInterceptor } from './shared/interceptors/http.interceptor';
+import { UrlSanitizerPipe } from './shared/pipes/url-sanitizer.pipe';
+import { ShowDetailsComponent } from './components/show-details/show-details.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { SignupComponent } from './shared/components/signup/signup.component';
-import { CompareValidatorDirective } from './directives/compare-validator.directive';
-import { DefaultValuePipe } from './pipes/default-value.pipe';
-import { WatchlistComponent } from './shared/components/watchlist/watchlist.component';
-import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
-import { LoadingService } from './services/loading.service';
+import { SignupComponent } from './components/signup/signup.component';
+import { CompareValidatorDirective } from './shared/directives/compare-validator.directive';
+import { DefaultValuePipe } from './shared/pipes/default-value.pipe';
+import { WatchlistComponent } from './components/watchlist/watchlist.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { LoadingService } from './shared/services/loading.service';
+import { EpisodeCardComponent } from './components/episode-card/episode-card.component';
+import { SeasonCardComponent } from './components/season-card/season-card.component';
+import { SeasonDetailsComponent } from './components/season-details/season-details.component';
 
 
 @NgModule({
@@ -40,7 +43,10 @@ import { LoadingService } from './services/loading.service';
     SignupComponent,
     CompareValidatorDirective,
     WatchlistComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    EpisodeCardComponent,
+    SeasonCardComponent,
+    SeasonDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +63,7 @@ import { LoadingService } from './services/loading.service';
     MatTooltipModule
   ],
   providers: [
-    ErrorHandler,
+    SnackbarService,
     LoadingService,
     {provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true},
   ],
@@ -67,6 +73,6 @@ import { LoadingService } from './services/loading.service';
     SignupComponent,
     LoginComponent
   ],
-  exports: [LoadingSpinnerComponent]
+  exports: [LoadingSpinnerComponent, EpisodeCardComponent, SeasonCardComponent, SeasonDetailsComponent]
 })
 export class AppModule { }

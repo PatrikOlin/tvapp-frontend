@@ -1,0 +1,30 @@
+<div class="signupContainer">
+<h1 mat-dialog-title>Sign up</h1>
+  <form [formGroup]="signUpFormGroup" class="signupForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="username">Email</label>
+      <input type="text" name="username" formControlName="username">
+    </div>
+    <p class="bg-danger" *ngIf="!!signUpFormGroup.controls.username?.errors?.required &&
+    (!!signUpFormGroup.controls.username.dirty)">Email is required</p>
+    <div [formGroup]="passwordFormGroup">
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" formControlName="password">
+      </div>
+      <p class="bg-danger" *ngIf="!!passwordFormGroup.controls.password.errors?.required &&
+      (!!passwordFormGroup.controls.password.dirty)">Password is required</p>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm password</label>
+            <input type="password" name="confirmPassword" formControlName="confirmPassword">
+          </div>
+          <p class="bg-danger" *ngIf="!!passwordFormGroup.controls.confirmPassword.errors?.required &&
+          (!!passwordFormGroup.controls.confirmPassword.dirty)">Please confirm password</p>
+          <p class="bg-danger" *ngIf="!!passwordFormGroup.controls.errors?.doesMatchPassword">The passwords do not match</p>
+        </div>
+        <p>{{passwordFormGroup.controls.errors?.doesMatchPassword}}</p>
+        <div class="form-group">
+          <button class="btn btn-inverse mt-4" type="submit" [disabled]='!signUpFormGroup.valid'>Sign up</button>
+        </div>
+  </form>
+</div>

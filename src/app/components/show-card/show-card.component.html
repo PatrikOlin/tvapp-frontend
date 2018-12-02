@@ -1,0 +1,12 @@
+<div class="card" [ngStyle]="(router.url === '/watchlist') && {'height': '47em'}">
+    <a [routerLink]="['/showdetails/', show.id]">
+  <img class="card-img-top" src="{{show?.poster_path}}" />
+  <div class="card-body">
+    <h5 class="card-title">{{show?.name | defaultValue:'N/A'}}</h5>
+    <p class="card-text">{{show?.overview | defaultValue:'N/A'}}</p>
+  </div>
+  <div *ngIf="router.url === '/watchlist'" class="card-footer">
+    <p class="text-left">Next episode {{ show?.nextAirDate | defaultValue:'N/A' }} {{ show?.airTime }}</p>
+  </div>
+  </a>
+</div>
