@@ -20,12 +20,4 @@ export class SeasonCardComponent implements OnInit {
     this.season.poster_path = this.BASE_URI + this.season.poster_path;
   }
 
-  onClick() {
-    this.getSeasonDetails(this.show.id, this.season.season_number);
-  }
-
-  getSeasonDetails(showId: number, season: number) {
-
-  }
-
 }
