@@ -1,4 +1,4 @@
-import { environment } from './../../../environments/environment.local';
+import { environment } from './../../../environments/environment.prod';
 import { Episode } from 'src/app/shared/interfaces/episode';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
