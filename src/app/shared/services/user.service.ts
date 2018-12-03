@@ -40,6 +40,41 @@ export class UserService implements OnDestroy {
     });
   }
 
+  firstLogin(username: string, password: string) {
+    this.setKey(username, password);
+    this.apiCaller.login().subscribe((res) => {
+      const encodedId = res.toString();
+      console.log(encodedId);
+      this.userId = atob(encodedId);
+      sessionStorage.setItem('userId', this.userId);
+      sessionStorage.setItem('username', username);
+      this.username = username;
+    }, (err) => {
+      console.log('ERROR:', err);
+      this.snackbar.handleError(err.message);
+    },
+    () => {
+      this.router.navigate(['']);
+    });
+  }
+
+  signup(email: string, password: string) {
+    const plainPass = password;
+    for (let i = 0; i < 3; i++) {
+      password = btoa(password);
+    }
+    this.apiCaller.registerUser(email, password).subscribe((res) => {
+      console.log(email, password);
+    },
+    (err) => {
+      console.log('SIGNUPERROR', err);
+      /* this.snackbar.handleError(err.message); */
+    },
+    () => {
+      this.firstLogin(email, plainPass);
+    });
+  }
+
   logout() {
     sessionStorage.clear();
     this.username = '';

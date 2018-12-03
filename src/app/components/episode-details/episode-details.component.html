@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <a [routerLink]="['../..']"><i class="fas fa-angle-double-left"></i> Back to season page</a>
+    <img class="mt-4 mb-4 episode-img" src="{{episode?.still_path}}" />
+          <div class="float-left mt-4 mb-4">
+            <h1>{{ episode?.title | defaultValue:'N/A'}}</h1>
+            <p>Episode no. {{episode?.episode_number | defaultValue:'N/A'}} from season {{episode?.season_number}}</p>
+            <span *ngIf="episode?.siteRating >= 8" class="fa-stack fa-lg" matTooltip="Episode rating">
+                <i class="far fa-circle fa-stack-2x"></i>
+                <i class="far fa-grin-hearts fa-stack-1x"></i>
+              </span>
+              <span *ngIf="episode?.siteRating >= 5 && episode?.siteRating < 8" class="fa-stack fa-lg" matTooltip="Episode rating">
+                <i class="far fa-circle fa-stack-2x"></i>
+                <i class="far fa-grin fa-stack-1x"></i>
+              </span>
+              <span *ngIf="episode?.siteRating < 5 && episode?.siteRating > 2" class="fa-stack fa-lg" matTooltip="Episode rating">
+                  <i class="far fa-circle fa-stack-2x"></i>
+                  <i class="far fa-frown fa-stack-1x"></i>
+              </span>
+              <span *ngIf="episode?.siteRating < 2" class="fa-stack fa-lg" matTooltip="Episode rating">
+                <i class="far fa-circle fa-stack-2x"></i>
+                <i class="far fa-sad-cry fa-stack-1x"></i>
+            </span>
+            <span style="font-size: 2.5em;">{{episode?.siteRating}}</span>
+            <h5 class="mt-3">Overview:</h5>
+            <p>{{ episode?.overview | defaultValue:'N/A' }}</p>
+            <p>Air date: {{ episode?.air_date | defaultValue:'N/A' }} </p>
+          </div>
+        </div>
+    </div>

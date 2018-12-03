@@ -2,7 +2,7 @@
     <a [routerLink]="['/showdetails/', show.id]">
   <img class="card-img-top" src="{{show?.poster_path}}" />
   <div class="card-body">
-    <h5 class="card-title">{{show?.name | defaultValue:'N/A'}}</h5>
+    <h5 class="card-title">{{show?.name || show?.title | defaultValue:'N/A'}}</h5>
     <p class="card-text">{{show?.overview | defaultValue:'N/A'}}</p>
   </div>
   <div *ngIf="router.url === '/watchlist'" class="card-footer">

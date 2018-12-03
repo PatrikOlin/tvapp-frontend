@@ -37,8 +37,9 @@ export class ShowDetailsComponent implements OnInit {
         this.show = data;
         this.show.poster_path = this.BASE_URI + this.show.poster_path;
         this.show.id = data.id;
+        this.show.first_air_date = moment(data.first_air_date).local().format('YYYY-MM-DD');
         if (data.airsTime != null && data.next_episode_to_air != null) {
-          this.show.nextEpisodeLocal = moment(data.next_episode_to_air.air_date + ' ' + data.airsTime)
+          this.show.nextEpisodeLocal = moment(data.next_episode_to_air.air_date)
           .local().format('YYYY-MM-DD HH:mm');
         }
         this.seasons = data.seasons;
@@ -84,5 +85,7 @@ export class ShowDetailsComponent implements OnInit {
     showDetails = data;
     console.log(showDetails);
   }); */
+
+  }
 
 }

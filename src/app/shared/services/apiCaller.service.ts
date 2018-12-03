@@ -1,3 +1,4 @@
+import { Episode } from 'src/app/shared/interfaces/episode';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -33,7 +34,6 @@ export class ApiCallerService {
     return this.http.get<ShowDetails>(this.BASE_URI + '/shows/details', {params: params});
   }
 
-  // TODO: När detta går sönder så är det nog för att /favorite har ändrats till /watchlist i backend
   addToWatchlist(userId: number, showId: number) {
     const body = {
       'user_id': userId,
@@ -57,5 +57,24 @@ export class ApiCallerService {
       .set('season', season.toString());
 
     return this.http.get<Season>(this.BASE_URI + '/shows/details/season', {params: params});
+  }
+
+  getEpisodeDetails(showId: number, season: number, episode: number) {
+    const params = new HttpParams()
+      .set('show_id', showId.toString())
+      .set('season', season.toString())
+      .set('episode', episode.toString());
+
+      return this.http.get<Episode>(this.BASE_URI + '/shows/details/episode', {params: params});
+  }
+
+  registerUser(email: string, password: string) {
+    const headers = new HttpHeaders({
+        'email': email,
+        'password': password
+      });
+
+    const httpOptions = { headers: headers, responseType: 'text' as 'text' };
+    return this.http.post(this.BASE_URI + '/login/create', null, httpOptions);
   }
 }

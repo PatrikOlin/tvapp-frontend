@@ -38,7 +38,7 @@ export class SearchBoxComponent implements OnInit {
     this.loader.show();
     this.apiCaller.searchShows(searchQuery).subscribe(
       data => {
-        this.shows = <any>data;
+        this.shows = data;
         console.log(this.shows);
       },
       (err) => {

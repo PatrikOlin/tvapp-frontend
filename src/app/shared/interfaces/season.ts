@@ -8,6 +8,6 @@ export interface Season {
   name: string;
   overview: string;
   poster_path: string;
-  air_date: Moment;
+  air_date: string;
   episodes: Episode[];
 }

@@ -19,7 +19,7 @@ import { UrlSanitizerPipe } from './shared/pipes/url-sanitizer.pipe';
 import { ShowDetailsComponent } from './components/show-details/show-details.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { SignupComponent } from './components/signup/signup.component';
-import { CompareValidatorDirective } from './shared/directives/compare-validator.directive';
+import { PasswordValidatorDirective } from './shared/directives/password-validator.directive';
 import { DefaultValuePipe } from './shared/pipes/default-value.pipe';
 import { WatchlistComponent } from './components/watchlist/watchlist.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
@@ -27,6 +27,8 @@ import { LoadingService } from './shared/services/loading.service';
 import { EpisodeCardComponent } from './components/episode-card/episode-card.component';
 import { SeasonCardComponent } from './components/season-card/season-card.component';
 import { SeasonDetailsComponent } from './components/season-details/season-details.component';
+import { EpisodeDetailsComponent } from './components/episode-details/episode-details.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -41,12 +43,14 @@ import { SeasonDetailsComponent } from './components/season-details/season-detai
     DefaultValuePipe,
     ShowDetailsComponent,
     SignupComponent,
-    CompareValidatorDirective,
+    PasswordValidatorDirective,
     WatchlistComponent,
     LoadingSpinnerComponent,
     EpisodeCardComponent,
     SeasonCardComponent,
-    SeasonDetailsComponent
+    SeasonDetailsComponent,
+    EpisodeDetailsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +77,12 @@ import { SeasonDetailsComponent } from './components/season-details/season-detai
     SignupComponent,
     LoginComponent
   ],
-  exports: [LoadingSpinnerComponent, EpisodeCardComponent, SeasonCardComponent, SeasonDetailsComponent]
+  exports: [
+    LoadingSpinnerComponent,
+    EpisodeCardComponent,
+    SeasonCardComponent,
+    SeasonDetailsComponent,
+    EpisodeDetailsComponent,
+    FooterComponent]
 })
 export class AppModule { }

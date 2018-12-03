@@ -3,6 +3,7 @@ import { Season } from '../../shared/interfaces/season';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Episode } from '../../shared/interfaces/episode';
 import { LoadingService } from 'src/app/shared/services/loading.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-season-details',
@@ -25,6 +26,7 @@ export class SeasonDetailsComponent implements OnInit {
       .subscribe((data: {season: Season}) => {
         console.log(data.season);
         this.season = data.season;
+        this.season.air_date = moment(data.season.air_date).local().format('YYYY-MM-DD');
         this.episodes = data.season.episodes;
         this.loader.hide();
       },

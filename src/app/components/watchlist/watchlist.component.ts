@@ -30,7 +30,10 @@ export class WatchlistComponent implements OnInit {
         this.shows = <any>data;
         console.log(this.shows);
       },
-      err => console.log(err),
+      err => {
+        this.loaderService.hide();
+        console.log(err);
+      },
       () => {
         this.loaderService.hide();
       });

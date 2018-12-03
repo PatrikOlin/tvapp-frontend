@@ -15,13 +15,20 @@ export class RequestInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    const headers = new HttpHeaders({
+/*     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Basic ' + this.userService.getKey(),
       'user_id': this.userService.getEncodedUserId()
-    });
+    }); */
 
-    const cloneReq = req.clone({headers});
+    console.log(req.headers);
+
+    const cloneReq = req.clone({
+      headers: req.headers.set('Content-Type', 'application/json')
+      .set('Authorization', 'Basic ' + this.userService.getKey())
+      .set('user_id', this.userService.getEncodedUserId())
+    });
+    console.log(cloneReq.headers);
     return next
       .handle(cloneReq)
       .pipe(tap((event: HttpEvent<any>) => {
@@ -35,5 +42,7 @@ export class RequestInterceptor implements HttpInterceptor {
         })
       );
   }
+
+
 
 }
