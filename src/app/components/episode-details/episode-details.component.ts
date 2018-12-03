@@ -22,9 +22,16 @@ export class EpisodeDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.loader.show();
-    const showId = this.route.params._value.showId;
-    const seasonId = this.route.params._value.seasonId;
-    const episodeId = this.route.params._value.episodeId;
+    let showId;
+    let seasonId;
+    let episodeId;
+    this.route.params.subscribe((res) => {
+      showId = res.showId;
+      seasonId = res.seasonId;
+      episodeId = res.episodeId;
+    });
+
+
     console.log(showId, seasonId, episodeId);
 
     this.apiCaller.getEpisodeDetails(showId, seasonId, episodeId)
