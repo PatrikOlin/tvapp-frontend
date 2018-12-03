@@ -1,0 +1,18 @@
+.episode-image {
+  object-fit: cover;
+  height: 7em;
+  margin: 1em;
+  margin-bottom: .5em;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: all .3s cubic-bezier(.25,.8,.25,1);
+}
+
+.episode-image:hover {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.16), 0 5px 10px rgba(0, 0, 0, 0.23);
+}
+
+.episode-text {
+  max-width: 8em;
+  margin: auto;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,42 @@
+.signupContainer {
+  min-width: 25em;
+  background-color: #222222;
+  color: #FFD935;
+  padding: 2em;
+}
+
+.signupForm {
+  padding: 1em;
+}
+
+.signupContainer h1 {
+  color: #FFD935
+}
+
+.signupForm input {
+  width: 100%;
+  margin-bottom: 7px;
+  border-bottom: #FFD935 solid 2px;
+  color: #FFD935;
+}
+
+.signupForm input::placeholder {
+  color: rgb(156, 134, 33);
+}
+
+.signupForm button {
+  float:right;
+  width: 6em;
+}
+
+.ngvalid[required], .ng-valid-required {
+  border-left: 5px solid #42A948;
+}
+
+input.ng-dirty.ng-invalid {
+  border-left: 5px solid #a94442;
+}
+
+label {
+  margin-top: 1em;
+}

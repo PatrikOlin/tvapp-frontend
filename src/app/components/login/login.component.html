@@ -1,0 +1,27 @@
+<div mat-dialog-content class="loginContainer">
+    <h1 mat-dialog-title>Log in</h1>
+  <form class="loginForm"
+    #loginForm="ngForm"
+    (ngSubmit)="onSubmit(loginForm)">
+    <label for="email">Email</label>
+    <input type="text"
+      name="email"
+      class="loginInput"
+      id="email"
+      placeholder="email"
+      [(ngModel)]="email"
+      required
+      email><br />
+    <label for="password">Password</label>
+    <input type="password"
+      name="password"
+      id="password"
+      class="loginInput"
+      placeholder="password"
+      [(ngModel)]="password"
+      required><br />
+    <button type="submit"
+      class="btn btn-inverse mt-4"
+      [disabled]="loginForm.invalid">Log in</button>
+  </form>
+</div>

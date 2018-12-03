@@ -1,0 +1,25 @@
+.media {
+  color: black;
+  margin: 1em;
+  margin-top: 2em;
+}
+
+.favoriteIcon {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  z-index: 2;
+}
+
+img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.far, .fas {
+  top: -8px;
+}
+
+.show-img {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}

@@ -1,0 +1,53 @@
+.card {
+  color: #000000;
+  background-color: #ffffff;
+  margin: 1em;
+  margin-top: 2em;
+  width: 20em;
+  height: 45em;
+}
+
+.card a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.card-body {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  line-height: 1.6em;
+  max-height: 11.2em;
+}
+
+/* .favoriteIcon {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  z-index: 2;
+} */
+
+.card-footer {
+  text-align: end;
+  padding-right: 3em;
+  position: absolute;
+  bottom:0 ;
+  width: 100%;
+}
+
+.card-footer a {
+  position: absolute;
+  left: 1em;
+}
+
+.card-footer p {
+  margin-bottom: 0;
+}

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 
 @Component({
@@ -8,6 +7,6 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'tvapp-frontenden';
+  title = 'showtime';
 
 }

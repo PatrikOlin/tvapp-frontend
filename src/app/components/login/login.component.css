@@ -1,0 +1,29 @@
+.loginContainer {
+  min-width: 25em;
+  background-color: #222222;
+  color: #FFD935;
+  padding: 2em;
+}
+
+.loginForm {
+  padding: 1em;
+}
+
+.loginContainer h1 {
+  color: #FFD935
+}
+
+.loginForm input {
+  width: 100%;
+  margin-bottom: 7px;
+  border-bottom: #FFD935 solid 2px;
+  color: #FFD935;
+}
+
+.loginForm input::placeholder {
+  color: rgb(156, 134, 33);
+}
+
+.loginForm button {
+  float:right;
+}

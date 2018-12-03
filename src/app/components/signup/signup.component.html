@@ -1,0 +1,71 @@
+<div mat-dialog-content class="signupContainer">
+    <h1 mat-dialog-title>Log in</h1>
+  <form class="signupForm"
+    #signupForm="ngForm"
+    appPasswordValidator
+    (ngSubmit)="onSubmit(signupForm)">
+    <label for="email">Email</label>
+    <input type="text"
+      name="email"
+      class="loginInput"
+      id="email"
+      placeholder="email"
+      [(ngModel)]="email"
+      required
+      email><br />
+    <label for="password">Password</label>
+    <input type="password"
+      name="password"
+      id="password"
+      class="loginInput"
+      placeholder="password"
+      [(ngModel)]="password"
+      required><br />
+      <label for="password">Confirm password</label>
+      <input type="password"
+      name="confirmPassword"
+      id="confirmPassword"
+      class="loginInput"
+      placeholder="confirm password"
+      [(ngModel)]="confirmPassword"
+      required><br />
+      <div *ngIf="signupForm.errors?.passwordMatch && (signupForm.controls.confirmPassword.touched || signupForm.controls.confirmPassword.dirty)" class="bg-danger">
+        Passwords does not match.
+      </div>
+    <button type="submit"
+      class="btn btn-inverse mt-4"
+      [disabled]="signupForm.invalid">Log in</button>
+  </form>
+</div>
+
+
+<!-- <div class="signupContainer">
+<h1 mat-dialog-title>Sign up</h1>
+  <form [formGroup]="signUpFormGroup" class="signupForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="username">Email</label>
+      <input type="text" name="username" formControlName="username">
+    </div>
+    <p class="bg-danger" *ngIf="signUpFormGroup.controls.username?.errors?.required &&
+    (signUpFormGroup.controls.username.dirty)">Email is required</p>
+    <div [formGroup]="passwordFormGroup">
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" formControlName="password">
+      </div>
+      <p class="bg-danger" *ngIf="!!passwordFormGroup.controls.password.errors?.required &&
+      (passwordFormGroup.controls.password.dirty)">Password is required</p>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm password</label>
+            <input type="password" name="confirmPassword" formControlName="confirmPassword">
+          </div>
+          <p class="bg-danger" *ngIf="passwordFormGroup.controls.confirmPassword.errors?.required &&
+          (passwordFormGroup.controls.confirmPassword.dirty)">Please confirm password</p>
+          <p class="bg-danger" *ngIf="passwordFormGroup.errors?.passwordValidated">The passwords do not match</p>
+        </div>
+        <p>{{passwordFormGroup.errors?.passwordValidated}}</p>
+        <div class="form-group">
+          <button class="btn btn-inverse mt-4" type="submit" [disabled]='!signUpFormGroup.valid'>Sign up</button>
+        </div>
+  </form>
+</div> -->
