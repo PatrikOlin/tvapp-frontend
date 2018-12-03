@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment.local';
 import { Episode } from 'src/app/shared/interfaces/episode';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -12,7 +13,7 @@ import { Season } from '../interfaces/season';
 })
 export class ApiCallerService {
 
-  private BASE_URI = 'http://localhost:8080/api';
+  private BASE_URI = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
