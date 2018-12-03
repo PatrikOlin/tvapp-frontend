@@ -7,7 +7,7 @@ const path = require('path');
 app.use(express.static(__dirname + '/dist/tvapp-frontend'));
 // Start the app by listening on the default
 // Heroku port
-app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || 8000);
 // For all GET requests, send back index.html
 // so that PathLocationStrategy can be used
 app.get('/*', function(req, res) {

@@ -31,7 +31,6 @@ export class EpisodeDetailsComponent implements OnInit {
       seasonId = res.seasonId;
       episodeId = res.episodeId;
     });
-    console.log(this.route.params);
     console.log(showId, seasonId, episodeId);
 
     this.apiCaller.getEpisodeDetails(showId, seasonId, episodeId)
